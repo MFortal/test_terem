@@ -137,6 +137,7 @@ a:hover {
 }
 
 @media (orientation: portrait) and (max-width: 479px) {
+  h1,
   .header-text {
     font-size: 1.1rem;
   }
