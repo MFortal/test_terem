@@ -25,4 +25,23 @@ $(document).ready(function ($) {
     $("#block2_1").toggleClass("g-c-12");
     $("#block2_2").toggleClass("g-c-23");
   });
+
+  $("#form").submit(function (e) {
+    // отображение данных из формы на экран
+    const data = new FormData(e.target);
+    const formJSON = Object.fromEntries(data.entries());
+    const results = document.querySelector(".results pre");
+    results.innerText = JSON.stringify(formJSON, null, 2);
+
+    // отправка данных на сервер
+    $.ajax({
+      url: "/form/query.php",
+      method: "get",
+      dataType: "html",
+      data: formJSON,
+      success: function () {
+        alert("Данные получены");
+      },
+    });
+  });
 });
